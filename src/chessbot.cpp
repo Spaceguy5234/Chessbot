@@ -1,6 +1,18 @@
 #include <iostream>
+#include <bitset>
+#include <string>
+
+#include "board.hpp"
+#include "piece.hpp"
 
 int main(){
-    std::cout << "Hello World!";
-    return 0;
+    Board board;
+    std::cout << std::endl;
+    std::string output = std::bitset<64>(board.getPawns()).to_string();
+    for (int i=0; i < output.length(); i++){
+        if (i%8 == 0){
+            std::cout << std::endl;
+        }
+        std::cout << output[i];
+    }
 }
