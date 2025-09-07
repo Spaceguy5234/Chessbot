@@ -3,5 +3,9 @@ project(Chessbot VERSION 0.1.0
         DESCRIPTION "A really bad chessbot for learning lol"
         LANGUAGES CXX)
 
-add_executable(Chessbot src/chessbot.cpp include/board.cpp include/board.hpp include/piece.cpp include/piece.hpp)
+add_executable(Chessbot 
+                src/chessbot.cpp 
+                include/board.cpp 
+                include/board.hpp)
+
 target_include_directories(Chessbot PUBLIC include)
