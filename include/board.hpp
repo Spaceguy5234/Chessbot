@@ -57,7 +57,7 @@ public:
     uint64_t convertToBitboard(std::string algebraicInput);
     uint64_t convertToBitboard(int file, int rank);
 
-    bool getActiveColor();
+    bool getActiveColorBool();
     bool getWhiteKingRookCastle();
     bool getWhiteQueenRookCastle();
     bool getBlackKingRookCastle();
@@ -68,6 +68,7 @@ public:
 
     std::string getEnPassantTargetSquare();
     std::string getBoardFEN();
+    std::string getActiveColorString();
 
     void setBoardStateFromFen(std::string FEN);
     void setWhitePieces(uint64_t whiteLocations);

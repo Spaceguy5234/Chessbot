@@ -79,9 +79,14 @@ uint64_t Board::getKings()
 
 /// @brief Get the currently active color
 /// @return Bool of the currently active color, 0 = white 1 = black
-bool Board::getActiveColor()
+bool Board::getActiveColorBool()
 {
     return activeColor;
+}
+
+std::string Board::getActiveColorString(){
+    std::string result = activeColor ? "Black" : "White";
+    return result;
 }
 
 /// @brief Get the value of the half move clock
@@ -175,6 +180,7 @@ void Board::setBoardStateFromFen(std::string FEN)
         if(FENBoard[i] == '/'){
             fenRank--;
             fenFile = 1;
+            continue;
         }
 
         // gets the bitboard position indicated by the current rank and file
@@ -467,6 +473,7 @@ uint64_t Board::convertToBitboard(int file, int rank)
 
 
     int squareIndex = ((rank - 1) * 8) + (file - 1);
+    std::cout << "Converted square index: " << squareIndex << std::endl;
 
     uint64_t resultBoard = (uint64_t)1 << squareIndex;
     return resultBoard;
@@ -481,6 +488,7 @@ void Board::printDebugHelp(uint64_t input)
     std::cout << output.substr(16, 8) << std::endl;
     std::cout << output.substr(24, 8) << std::endl;
     std::cout << output.substr(32, 8) << std::endl;
+    std::cout << output.substr(40, 8) << std::endl;
     std::cout << output.substr(48, 8) << std::endl;
     std::cout << output.substr(56, 8) << std::endl;
     std::cout << std::endl;
