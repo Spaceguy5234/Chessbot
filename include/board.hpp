@@ -10,7 +10,6 @@
 #include <iostream>
 #include <bitset>
 
-
 // external includes
 
 // internal includes

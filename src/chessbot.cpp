@@ -28,10 +28,12 @@ int main()
     std::cout << "Black king is at: " << blackKingFile << " " << blackKingRank << std::endl;
 }
 
-std::string reverseString(std::string input){
+std::string reverseString(std::string input)
+{
     int inputStringLength = (int)input.length();
     std::string outputString;
-    for (int i = inputStringLength; i > 0; i--){
+    for (int i = inputStringLength; i > 0; i--)
+    {
         outputString.push_back(input[i]);
     }
     return outputString;

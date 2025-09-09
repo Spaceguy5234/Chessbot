@@ -84,7 +84,8 @@ bool Board::getActiveColorBool()
     return activeColor;
 }
 
-std::string Board::getActiveColorString(){
+std::string Board::getActiveColorString()
+{
     std::string result = activeColor ? "Black" : "White";
     return result;
 }
@@ -177,7 +178,8 @@ void Board::setBoardStateFromFen(std::string FEN)
     // Iterate through FENBoard string, setting the piece bitboards appropriately
     for (int i = 0; i < FENBoard.length(); i++)
     {
-        if(FENBoard[i] == '/'){
+        if (FENBoard[i] == '/')
+        {
             fenRank--;
             fenFile = 1;
             continue;
@@ -186,70 +188,70 @@ void Board::setBoardStateFromFen(std::string FEN)
         // gets the bitboard position indicated by the current rank and file
         boardPosition = convertToBitboard(fenFile, fenRank);
 
-            // Sets the white or black piece bitboard location bit accordingly
-            if(isalpha(FENBoard[i])){
-                isupper(FENBoard[i]) ? setWhitePieces(getWhitePieces() | boardPosition) : setBlackPieces(getBlackPieces() | boardPosition);
-            }
+        // Sets the white or black piece bitboard location bit accordingly
+        if (isalpha(FENBoard[i]))
+        {
+            isupper(FENBoard[i]) ? setWhitePieces(getWhitePieces() | boardPosition) : setBlackPieces(getBlackPieces() | boardPosition);
+        }
 
-            switch (FENBoard[i])
-            {
-            case 'P':
-            case 'p':
-                // sets the pawn bitboard location bit
-                setPawns(getPawns() | boardPosition);
-                fenFile++;
-                break;
+        switch (FENBoard[i])
+        {
+        case 'P':
+        case 'p':
+            // sets the pawn bitboard location bit
+            setPawns(getPawns() | boardPosition);
+            fenFile++;
+            break;
 
-            case 'N':
-            case 'n':
-                // sets the knight bitboard location bit
-                setKnights(getKnights() | boardPosition);
-                fenFile++;
-                break;
+        case 'N':
+        case 'n':
+            // sets the knight bitboard location bit
+            setKnights(getKnights() | boardPosition);
+            fenFile++;
+            break;
 
-            case 'B':
-            case 'b':
-                // sets the knight bitboard location bit
-                setBishops(getBishops() | boardPosition);
-                fenFile++;
-                break;
+        case 'B':
+        case 'b':
+            // sets the knight bitboard location bit
+            setBishops(getBishops() | boardPosition);
+            fenFile++;
+            break;
 
-            case 'R':
-            case 'r':
-                // set the rook bitboard location bit
-                setRooks(getRooks() | boardPosition);
-                fenFile++;
-                break;
+        case 'R':
+        case 'r':
+            // set the rook bitboard location bit
+            setRooks(getRooks() | boardPosition);
+            fenFile++;
+            break;
 
-            case 'Q':
-            case 'q':
-                // set the queen bitboard location bit
-                setQueens(getQueens() | boardPosition);
-                fenFile++;
-                break;
+        case 'Q':
+        case 'q':
+            // set the queen bitboard location bit
+            setQueens(getQueens() | boardPosition);
+            fenFile++;
+            break;
 
-            case 'K':
-            case 'k':
-                // set the king bitboard location bit
-                setKings(getKings() | boardPosition);
-                fenFile++;
-                break;
-            
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-                fenFile += (FENBoard[i] - '0');
-                break;
-            
-            default:
-                break;
-            }
-        
+        case 'K':
+        case 'k':
+            // set the king bitboard location bit
+            setKings(getKings() | boardPosition);
+            fenFile++;
+            break;
+
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+            fenFile += (FENBoard[i] - '0');
+            break;
+
+        default:
+            break;
+        }
     }
 
     // Set the currently active turn provided by the FEN string
@@ -448,8 +450,9 @@ uint64_t Board::convertToBitboard(std::string algebraicInput)
     }
 
     int file = (int)fileChar - 96;
-    
-    if (file < 1 || file > 8){
+
+    if (file < 1 || file > 8)
+    {
         throw std::invalid_argument("Invalid file");
     }
 
@@ -467,10 +470,10 @@ uint64_t Board::convertToBitboard(int file, int rank)
     {
         throw std::invalid_argument("Invalid rank");
     }
-    if (file < 1 || file > 8){
+    if (file < 1 || file > 8)
+    {
         throw std::invalid_argument("Invalid file");
     }
-
 
     int squareIndex = ((rank - 1) * 8) + (file - 1);
     std::cout << "Converted square index: " << squareIndex << std::endl;
