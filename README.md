@@ -1,4 +1,4 @@
-#Basic chessbot for learning
+# Basic chessbot for learning
 
 My attempt at making a basic chessbot from "scratch," meaning no libraries outside of std/other c++ standard libraries or libraries I create. 
 
